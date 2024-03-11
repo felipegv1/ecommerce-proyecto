@@ -1,6 +1,8 @@
 <h2>Listado de Proveedores</h2>
 <ul>
   <li *ngFor="let proveedor of proveedores">
-    {{ proveedor.nombre }} - {{ proveedor.telefono }} - {{ proveedor.direccion }}
+    <a [routerLink]="['/proveedores/', proveedor.nombre]">
+      {{ proveedor.nombre }}
+    </a>
   </li>
 </ul>

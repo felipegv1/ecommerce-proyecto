@@ -1,36 +1,42 @@
-from models.Producto import Producto
+
+from rest_framework.decorators import api_view
+from ..models import Producto
+from ..serializers import ProductoSerializer
+from rest_framework.response import Response
+from rest_framework import status
 
 
-def buscar_productos_por_categoria(nombre_categoria):
-    productos = Producto.objects.filter(categoria=nombre_categoria)
-    if productos.exists():
-        return True, productos
-    else:
-        return False, "No se encontraron productos para la categoría proporcionada."
+@api_view(['GET'])
+def productoList(request):
+    if request.method == 'GET':
+        producto = Producto.objects.all()
+        serializer = ProductoSerializer(producto, many=True)
+        return Response(serializer.data)
 
 
-def eliminar_producto(producto_id):
+@api_view(['GET'])
+def obtenerProductoPorNombre(request, nombre):
     try:
-        producto = Producto.objects.get(pk=producto_id)
-        producto.delete()
-        return True, "Producto eliminado correctamente."
+        producto = Producto.objects.get(nombre=nombre)
     except Producto.DoesNotExist:
-        return False, "Producto no encontrado."
+        return Response({"mensaje": "producto no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = ProductoSerializer(producto)
+        return Response(serializer.data)
 
 
-def crear_producto(nombre, descripcion, precio, categoria, stock, proveedor):
-    producto = Producto(nombre=nombre, descripcion=descripcion, precio=precio,
-                        categoria=categoria, stock=stock, proveedor=proveedor)
-    producto.save()
-    return producto
+@api_view(['GET'])
+def obtenerProductosPorCategoria(request, categoria):
+    productos = Producto.objects.filter(categoria=categoria)
+    serializer = ProductoSerializer(productos, many=True)
+    return Response(serializer.data)
 
 
-def listar_productos_por_categoria(categoria):
-    return Producto.objects.filter(categoria=categoria)
-
-
-def incrementar_stock_producto(producto_id, cantidad):
-    producto = Producto.objects.get(pk=producto_id)
-    producto.stock += cantidad
-    producto.save()
-    return producto
+@api_view(['POST'])
+def crearProducto(request):
+    serializer = ProductoSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

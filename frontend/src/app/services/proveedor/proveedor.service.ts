@@ -15,4 +15,10 @@ export class ProveedorService {
     return this.http.get<Proveedor[]>('http://localhost:8000/proveedores/');
   }
 
+
+  public obtenerProveedorPorId(nombre: string): Observable<Proveedor> {
+    const url = `http://localhost:8000/proveedores/${nombre}`;
+    return this.http.get<Proveedor>(url);
+  }
+
 }
