@@ -1,6 +1,4 @@
 
-from rest_framework import generics
-
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -8,17 +6,14 @@ from ..models import Proveedor
 from ..serializers import ProveedorSerializer
 
 
-# Indica que esta vista acepta los métodos GET y POST.
 @api_view(['GET', 'POST'])
 def proveedor_list(request):
     if request.method == 'GET':
-        # Si la solicitud es GET, obtenemos todos los proveedores y devolvemos su información.
         proveedores = Proveedor.objects.all()
         serializer = ProveedorSerializer(proveedores, many=True)
         return Response(serializer.data)
 
     elif request.method == 'POST':
-        # Si la solicitud es POST, creamos un nuevo proveedor con los datos proporcionados.
         serializer = ProveedorSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -26,9 +21,27 @@ def proveedor_list(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# class ProveedorList(generics.ListAPIView):
-#     queryset = Proveedor.objects.all()
-#     serializer_class = ProveedorSerializer
+@api_view(['GET'])
+def obtenerProveedorPorId(request, id):
+    try:
+        proveedor = Proveedor.objects.get(id=id)
+    except Proveedor.DoesNotExist:
+        return Response({"mensaje": "Proveedor no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ProveedorSerializer(proveedor)
+        return Response(serializer.data)
+
+
+@api_view(['GET'])
+def obtenerProveedorPorNombre(request, nombre):
+    try:
+        proveedor = Proveedor.objects.get(nombre=nombre)
+    except Proveedor.DoesNotExist:
+        return Response({"mensaje": "Proveedor no encontrado"}, status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = ProveedorSerializer(proveedor)
+        return Response(serializer.data)
 
 
 # def actualizar_direccion_proveedor(proveedor_id, nueva_direccion):

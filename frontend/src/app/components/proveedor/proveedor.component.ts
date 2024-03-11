@@ -16,6 +16,7 @@ export class ProveedorComponent {
 
   proveedores: Proveedor[] = [];
 
+
   ngOnInit(): void {
     this.obtenerProveedores();
   }
@@ -24,12 +25,10 @@ export class ProveedorComponent {
     this.proveedorService.obtenerProveedores().subscribe(
       (data: Proveedor[]) => {
         this.proveedores = data;
-      },
-      error => {
-        console.error('Ocurrió un error al obtener los proveedores', error);
       }
     );
   }
+
 
 
 
