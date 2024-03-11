@@ -8,6 +8,7 @@ class Producto(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     categoria = models.TextField(default='')
     stock = models.IntegerField(default='')
-    # imagen = models.ImageField(upload_to='productos/', blank=True, null=True)
     proveedor = models.ForeignKey(
         Proveedor, on_delete=models.SET_NULL, null=True)
+
+    # imagen = models.ImageField(upload_to='productos/', blank=True, null=True)

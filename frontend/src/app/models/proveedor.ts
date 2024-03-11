@@ -1,5 +1,5 @@
 export interface Proveedor {
-  id?: number;
+  id: number;
   nombre: string;
   telefono: string;
   email: string;

@@ -1,53 +1,27 @@
-# ecommerce-proyecto
-
-Proyecto e-commerce laboratorio de software
-
-python manage.py makemigrations
-python manage.py migrate
-
-mysql
-pip install mysqlclient
-
-CORS Cross-origin resource sharing
-pip install django-cors-headers
-
-Rest framework
-pip install django-cors-headers
-
-para iniciar el proyecto (Django):
-python manage.py runserver
-
-Instalar angular
-npm install -g @angular/cli
-
-Para iniciar el proyecto (Angular):
-ng serve
-
-Inserts de la base de datos:
-
-INSERT INTO app_cliente(nombre, email, direccion, telefono)
-VALUES
-('Alejandro García Mendoza', 'agmendoza@mail.com', 'direccion1', '3001234567'),
-('Miguel Sánchez Pérez', 'msanchezperez@mail.com', 'direccion2', '3011234567'),
-('Isabel Torres Ruiz', 'itorresruiz@mail.com', 'direccion3', '3021234567'),
-('Adriana Vargas Moreno', 'avargasm@mail.com', 'direccion4', '3031234567'),
-('Roberto Guzmán Hernández', 'robertogh@mail.com', 'direccion5', '3041234567'),
-('Daniela Ríos Silva', 'daniriossilva@mail.com', 'direccion6', '3051234567'),
-('Luis Montoya Cárdenas', 'luismc@mail.com', 'direccion7', '3061234567'),
-('Liliana López Ramírez', 'lilianalr@mail.com', 'direccion8', '3071234567'),
-('Felipe Arias Galindo', 'fariasgalindo@mail.com', 'direccion9', '3081234567'),
+INSERT INTO app_cliente(nombre, email, direccion, telefono) 
+VALUES 
+('Alejandro García Mendoza', 'agmendoza@mail.com', 'direccion1', '3001234567'), 
+('Miguel Sánchez Pérez', 'msanchezperez@mail.com', 'direccion2', '3011234567'), 
+('Isabel Torres Ruiz', 'itorresruiz@mail.com', 'direccion3', '3021234567'), 
+('Adriana Vargas Moreno', 'avargasm@mail.com', 'direccion4', '3031234567'), 
+('Roberto Guzmán Hernández', 'robertogh@mail.com', 'direccion5', '3041234567'), 
+('Daniela Ríos Silva', 'daniriossilva@mail.com', 'direccion6', '3051234567'), 
+('Luis Montoya Cárdenas', 'luismc@mail.com', 'direccion7', '3061234567'), 
+('Liliana López Ramírez', 'lilianalr@mail.com', 'direccion8', '3071234567'), 
+('Felipe Arias Galindo', 'fariasgalindo@mail.com', 'direccion9', '3081234567'), 
 ('Camila Medina Rosales', 'camilamr@mail.com', 'direccion10', '3091234567');
 
-INSERT INTO app_proveedor(nombre, telefono, email, direccion)
-VALUES
-('Empresa 1', '3001234567', 'email1@example.com', 'direccion1'),
-('Empresa 2', '3012345678', 'email2@example.com', 'direccion2'),
-('Empresa 3', '3023456789', 'email3@example.com', 'direccion3'),
-('Empresa 4', '3034567890', 'email4@example.com', 'direccion4'),
+
+INSERT INTO app_proveedor(nombre, telefono, email, direccion) 
+VALUES 
+('Empresa 1', '3001234567', 'email1@example.com', 'direccion1'), 
+('Empresa 2', '3012345678', 'email2@example.com', 'direccion2'), 
+('Empresa 3', '3023456789', 'email3@example.com', 'direccion3'), 
+('Empresa 4', '3034567890', 'email4@example.com', 'direccion4'), 
 ('Empresa 5', '3045678901', 'email5@example.com', 'direccion5');
 
-INSERT INTO app_producto(nombre, descripcion, precio, categoria, stock, proveedor_id)
-VALUES
+INSERT INTO app_producto(nombre, descripcion, precio, categoria, stock, proveedor_id) 
+VALUES 
 ('Pantalla XYZ', 'Pantalla OLED de 32 pulgadas con resolución 8K. Ideal para diseño gráfico profesional.', 599.99, 'Pantalla', 15, 1),
 ('Mouse Gamer Pro', 'Mouse ergonómico con luz LED. Ideal para gaming.', 49.99, 'Mouse', 20, 2),
 ('Teclado Mecánico RGB', 'Teclado mecánico con luz RGB y teclas programables. Perfecto para programadores y gamers.', 79.99, 'Teclado', 17, 3),
@@ -69,8 +43,8 @@ VALUES
 ('Teclado Ergonómico', 'Teclado ergonómico con apoyo para las muñecas. Perfecto para largas jornadas de trabajo.', 69.99, 'Teclado', 16, 4),
 ('Disco Duro SSD 1TB', 'Disco duro SSD de 1TB. Ideal para acelerar el rendimiento de tu computadora.', 159.99, 'Disco duro', 15,5);
 
-INSERT INTO app_factura(fecha, precio, cliente_id)
-VALUES
+INSERT INTO app_factura(fecha, precio, cliente_id) 
+VALUES 
 ('2023-01-15 09:00:00', 0, 7),
 ('2023-01-28 15:00:00', 0, 3),
 ('2023-02-08 12:00:00', 0, 10),
@@ -92,8 +66,8 @@ VALUES
 ('2023-07-27 15:00:00', 0, 5),
 ('2023-07-30 10:00:00', 0, 7);
 
-INSERT INTO app_facturaproducto(factura_id, producto_id, cantidad)
-VALUES
+INSERT INTO app_facturaproducto(factura_id, producto_id, cantidad) 
+VALUES 
 (1, 1, 2),
 (1, 4, 1),
 (1, 5, 3),
@@ -134,3 +108,4 @@ VALUES
 (15, 19, 1),
 (15, 20, 2),
 (15, 8, 1);
+
