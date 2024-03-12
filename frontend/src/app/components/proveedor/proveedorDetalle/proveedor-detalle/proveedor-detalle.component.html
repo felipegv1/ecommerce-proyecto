@@ -1,8 +1,11 @@
-<div *ngIf="proveedor">
-  <h2>{{ proveedor.nombre }}</h2>
-  {{ proveedor.id }} - {{ proveedor.nombre }} -  {{ proveedor.telefono }} - {{ proveedor.direccion }}
+<div *ngIf="proveedorConProductos">
+  <h2>{{ proveedorConProductos.nombre }}</h2>
+  {{ proveedorConProductos.id }} - {{ proveedorConProductos.nombre }} -  {{ proveedorConProductos.telefono }} - {{ proveedorConProductos.direccion }}
 </div>
-<h2></h2>
-<!-- <a [routerLink]="['/proveedores/']">
-  Volver al listado
-</a> -->
+<ul *ngIf="proveedorConProductos?.productos">
+  <h2>Productos:</h2>
+  <li *ngFor="let producto of proveedorConProductos?.productos">
+    {{ producto.nombre }} - {{ producto.descripcion }} - ${{ producto.precio }}
+  </li>
+</ul>
+<p *ngIf="!proveedorConProductos?.productos">No hay productos asociados a este proveedor.</p>

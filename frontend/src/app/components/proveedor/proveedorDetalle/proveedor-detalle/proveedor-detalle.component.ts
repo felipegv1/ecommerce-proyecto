@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Proveedor } from 'src/app/models/proveedor';
+import { ProveedorConProductos } from 'src/app/models/proveedorProductos';
 import { ProveedorService, } from 'src/app/services/proveedor/proveedor.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -15,26 +15,26 @@ export class ProveedorDetalleComponent {
     private router:Router
   ) {}
 
-  proveedor: Proveedor | null = null;
-  nombre: string = "";
+  proveedorConProductos: ProveedorConProductos | null = null;
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const nombre = params['nombre'];
       if (nombre) {
         this.verProveedor(nombre);
-      } else {
-        // Manejar el caso de que no se haya proporcionado un ID o no sea válido
-        console.log('ID de proveedor no proporcionado o no válido');
       }
     });
   }
 
   verProveedor(nombre: string): void {
     this.proveedorService.obtenerProveedorPorId(nombre).subscribe(
-      (data: Proveedor) => {
-        this.proveedor = data;
+      (data:ProveedorConProductos) => {
+        this.proveedorConProductos = data;
       }
     );
+
+
+
+
   }
 }

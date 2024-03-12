@@ -1,0 +1,30 @@
+<p>crear-producto works!</p>
+<form #productoForm="ngForm" (ngSubmit)="crearProducto()">
+  <div>
+    <label for="nombre">Nombre:</label>
+    <input id="nombre" type="text" [(ngModel)]="producto.nombre" name="nombre" required>
+  </div>
+  <div>
+    <label for="descripcion">Descripción:</label>
+    <input id="descripcion" type="text" [(ngModel)]="producto.descripcion" name="descripcion" required>
+  </div>
+  <div>
+    <label for="precio">Precio:</label>
+    <input id="precio" type="number" [(ngModel)]="producto.precio" name="precio" required>
+  </div>
+  <div>
+    <label for="categoria">Categoría:</label>
+    <select id="categoria" name="categoria" [(ngModel)]="producto.categoria" required>
+      <option *ngFor="let categoria of categorias" [value]="categoria">{{ categoria }}</option>
+    </select>
+  </div>
+  <div>
+    <label for="stock">Stock:</label>
+    <input id="stock" type="number" [(ngModel)]="producto.stock" name="stock" required>
+  </div>
+  <div>
+    <label for="idProveedor">ID del Proveedor:</label>
+    <input id="idProveedor" type="number" [(ngModel)]="producto.idProveedor" name="idProveedor" required>
+  </div>
+  <button type="submit" [disabled]="!productoForm.form.valid">Crear Producto</button>
+</form>

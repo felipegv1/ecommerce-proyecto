@@ -13,15 +13,20 @@ export class ProductoComponent {
   ) {}
 
   productos: Producto[] = [];
+  categorias: string[] = [];
 
   ngOnInit(): void {
-    this.obtenerProveedores();
+    this.obtenerProductos();
+
+
   }
 
-  obtenerProveedores(): void {
-    this.productoService.obtenerProveedores().subscribe(
+  obtenerProductos(): void {
+    this.productoService.obtenerProductos().subscribe(
       (data: Producto[]) => {
         this.productos = data;
+        const categoriasMap = this.productos.map(producto => producto.categoria);
+        this.categorias = [...new Set(categoriasMap)];
       }
     );
   }
