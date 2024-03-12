@@ -8,10 +8,30 @@ class ProveedorSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ProveedorProductosSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Proveedor
+        fields = '__all__'
+
+
 class ProductoSerializer(serializers.ModelSerializer):
+    idProveedor = serializers.ReadOnlyField(source='proveedor.id')
+
     class Meta:
         model = Producto
-        fields = '__all__'
+        fields = ['id', 'nombre', 'descripcion',
+                  'precio', 'categoria', 'stock', 'idProveedor']
+
+
+class ProveedorProductosSerializer(serializers.ModelSerializer):
+    # 'producto_set' es el nombre de la relación inversa de Proveedor a Producto
+    productos = ProductoSerializer(
+        many=True, read_only=True, source='producto_set')
+
+    class Meta:
+        model = Proveedor
+        fields = ['id', 'nombre', 'telefono',
+                  'email', 'direccion', 'productos']
 
 
 class ClienteSerializer(serializers.ModelSerializer):

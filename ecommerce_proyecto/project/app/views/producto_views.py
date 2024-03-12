@@ -29,7 +29,7 @@ def obtenerProductoPorNombre(request, nombre):
 def obtenerProductosPorCategoria(request, categoria):
     productos = Producto.objects.filter(categoria=categoria)
     serializer = ProductoSerializer(productos, many=True)
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
