@@ -8,19 +8,19 @@ import { Producto } from 'src/app/models/producto';
 })
 export class ProductoService {
 
-  private url = 'http://localhost:8000/'
+  private url = 'http://localhost:8000/productos/'
 
   proveedor: Producto[] = [];
 
   constructor(private http: HttpClient) { }
 
   public obtenerProductos(): Observable<Producto[]> {
-    return this.http.get<Producto[]>(`${this.url}productos/`);
+    return this.http.get<Producto[]>(`${this.url}`);
   }
 
 
   public obtenerProductosPorNombre(nombre: string): Observable<Producto> {
-    const url = `${this.url}productos/${nombre}`;
+    const url = `${this.url}${nombre}`;
     return this.http.get<Producto>(url);
   }
 
@@ -30,6 +30,6 @@ export class ProductoService {
   }
 
   crearProducto(producto: Producto): Observable<Producto> {
-    return this.http.post<Producto>(`${this.url}productos/crearProducto/`, producto);
+    return this.http.post<Producto>(`${this.url}crearProducto/`, producto);
   }
 }

@@ -15,13 +15,13 @@ export class CategoriaComponent {
   ) {}
 
   productos: Producto[] = [];
-
+  categoria: string = ''
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      const categoria = params['categoria'];
-      if (categoria) {
-        this.obtenerPorCategoria(categoria);
+      this.categoria = params['categoria'];
+      if (this.categoria) {
+        this.obtenerPorCategoria(this.categoria);
       }
     });
   }

@@ -29,7 +29,7 @@ def obtenerProveedorPorId(request, id):
 
 
 @api_view(['GET', 'POST'])
-def proveedor_list(request):
+def proveedorList(request):
     if request.method == 'GET':
         proveedores = Proveedor.objects.all()
         serializer = ProveedorSerializer(proveedores, many=True)

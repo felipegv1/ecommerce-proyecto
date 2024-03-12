@@ -23,6 +23,10 @@ npm install -g @angular/cli
 Para iniciar el proyecto (Angular):
 ng serve
 
+Para los test
+python manage.py test app.tests.productoTest
+python manage.py test app.tests.proveedorTest
+
 Inserts de la base de datos:
 
 INSERT INTO app_cliente(nombre, email, direccion, telefono)

@@ -1,4 +1,4 @@
-<h2>Lista de productos</h2>
+<h2>Categoria: {{ categoria }}</h2>
 <ul>
   <li *ngFor="let producto of productos">
     <a [routerLink]="['/productos/', producto.nombre]">

@@ -8,7 +8,7 @@ import { CategoriaComponent } from './components/producto/categoria/categoria.co
 import { CrearProductoComponent } from './components/producto/crear-producto/crear-producto.component';
 
 const routes: Routes = [
-  { path: '', component: ProveedorComponent},
+  { path: '', component: ProductoComponent},
   { path: 'proveedores', component: ProveedorComponent },
   { path: 'proveedores/:nombre', component: ProveedorDetalleComponent },
   { path: 'productos', component: ProductoComponent},

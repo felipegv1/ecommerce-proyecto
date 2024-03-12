@@ -30,7 +30,6 @@ export class ProductoDetalleComponent {
     this.productoService.obtenerProductosPorNombre(nombre).subscribe(
       (data: Producto) => {
         this.producto = data;
-        console.log(data);
       }
     );
   }
