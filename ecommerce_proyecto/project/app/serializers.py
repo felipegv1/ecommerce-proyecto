@@ -8,12 +8,6 @@ class ProveedorSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProveedorProductosSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Proveedor
-        fields = '__all__'
-
-
 class ProductoSerializer(serializers.ModelSerializer):
     idProveedor = serializers.ReadOnlyField(source='proveedor.id')
 

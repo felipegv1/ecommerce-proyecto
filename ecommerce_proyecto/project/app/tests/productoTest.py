@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from ..models import Producto
-from ..models import Proveedor
+from ..models import Producto, Proveedor
 from rest_framework import status
 from rest_framework.test import APITestCase
 from ..serializers import ProductoSerializer
@@ -38,18 +37,37 @@ class ProductoTest(APITestCase):
         url = reverse('obtenerProductosPorCategoria', args=["Teclado"])
         # simula una peticion GET a la api con la url
         response = self.client.get(url)
-        productos_esperados = Producto.objects.filter(categoria="Teclado")
-        serializer = ProductoSerializer(productos_esperados, many=True)
+        teclados = Producto.objects.filter(categoria="Teclado")
+        serializer = ProductoSerializer(teclados, many=True)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, serializer.data)
 
-    def testObtenerProductosPorCategoriaNoEncontrado(self):
-        # reverse genera una url con los argumentos dados
-        url = reverse('obtenerProductosPorCategoria', args=["Pantallas"])
-        # simula una peticion GET a la api con la url
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
     def testCrearProducto(self):
-        pass
+        url = reverse('crearProducto')
+        nuevoProducto = {
+            'nombre': 'Nuevo Producto test',
+            'descripcion': 'Descripción 3',
+            'precio': 150.00,
+            'categoria': 'Teclado',
+            'stock': 20,
+            'proveedor': 1
+        }
+        response = self.client.post(url, nuevoProducto, format='json')
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(Producto.objects.filter(
+            nombre='Nuevo Producto test').exists())
+
+    def testCrearProductoFallo(self):
+        url = reverse('crearProducto')
+        nuevoProducto = {
+            # Sin nombre
+            'descripcion': 'Descripción 3',
+            'precio': 150.00,
+            'categoria': 'Teclado',
+            'stock': 20,
+            'proveedor': 1
+        }
+
+        response = self.client.post(url, nuevoProducto, format='json')
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)

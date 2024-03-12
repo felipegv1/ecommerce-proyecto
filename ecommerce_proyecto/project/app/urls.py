@@ -8,7 +8,7 @@ urlpatterns = [
         path('<int:id>/', obtenerProveedorPorId,
              name='obtenerProveedorPorId'),
         path('<str:nombre>/', obtenerProveedorPorNombre,
-             name='proveedor-por-nombre'),
+             name='proveedorPorNombre'),
     ])),
     path('productos/', include([
         path('', productoList, name='productoList'),

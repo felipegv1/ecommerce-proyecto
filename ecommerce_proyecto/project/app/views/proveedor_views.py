@@ -13,7 +13,7 @@ def obtenerProveedorPorNombre(request, nombre):
     except Proveedor.DoesNotExist:
         return Response({"mensaje": "Proveedor no encontrado"}, status=status.HTTP_404_NOT_FOUND)
     serializer = ProveedorProductosSerializer(proveedor)
-    return Response(serializer.data)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
