@@ -1,15 +1,52 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-lg-5">
+  <!--
+    'navbar' crea el componente de barra de navegación.
+    'navbar-expand-lg' indica en qué punto el menú de navegación se expandirá de un menú colapsado a la barra de navegación horizontal.
+    'navbar-dark' establece el esquema de colores de la barra de navegación para un fondo oscuro.
+    'bg-primary' establece el color de fondo de la barra de navegación usando uno de los colores temáticos de Bootstrap.
+    'px-lg-5' aplica un padding horizontal en tamaños de pantalla grandes.
+  -->
   <div class="container-fluid">
+    <!-- 'container-fluid' es un contenedor que siempre es 100% del ancho de la pantalla. -->
     <a class="navbar-brand text-white me-lg-5" href="#">★ Logo</a>
+    <!--
+      'navbar-brand' da estilos específicos a la marca o título de la barra de navegación.
+      'text-white' establece el color del texto a blanco.
+      'me-lg-5' añade un margen derecho en tamaños de pantalla grandes.
+    -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <!--
+        'navbar-toggler' se utiliza para el botón de menú colapsado en vistas de móviles.
+        Los atributos data-* son para la funcionalidad de colapso del menú en dispositivos móviles.
+      -->
       <span class="navbar-toggler-icon"></span>
+      <!-- 'navbar-toggler-icon' añade el ícono de menú hamburguesa. -->
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <!-- Amplía el input y ajusta el margen derecho del form -->
+      <!--
+        'collapse' es una clase que oculta el contenido.
+        'navbar-collapse' se usa junto con 'navbar-toggler' para que el contenido colapsado se muestre al hacer clic en el botón de menú.
+      -->
       <form class="d-flex my-2 my-lg-0 me-lg-5" style="flex-grow: 1;">
+        <!--
+          'd-flex' activa el flexbox para el alineamiento interno del formulario.
+          'my-2' añade un margen vertical en todos los tamaños de pantalla.
+          'my-lg-0' anula el margen vertical anterior para tamaños de pantalla grandes, estableciéndolo en 0.
+          'me-lg-5' añade un margen derecho en tamaños de pantalla grandes.
+        -->
         <input class="form-control me-2" type="search" placeholder="Buscar Producto" aria-label="Search" style="padding: .5rem 1rem;">
+        <!--
+          'form-control' da estilos estándar de Bootstrap a los elementos de formulario.
+          'me-2' añade un margen a la derecha del input.
+        -->
       </form>
       <ul class="navbar-nav ms-auto align-items-center">
+        <!--
+          'navbar-nav' se usa para una lista de elementos dentro de una barra de navegación.
+          'ms-auto' establece un margen izquierdo automático, lo que empuja el contenido a la derecha.
+          'align-items-center' utiliza flexbox para centrar verticalmente los elementos.
+        -->
         <li class="nav-item active">
           <a class="nav-link text-white me-3" href="#">Historial</a>
         </li>
@@ -27,7 +64,12 @@
         </li>
         <!-- Añade margen a la derecha de los botones -->
         <li class="nav-item me-3">
+          <!-- 'me-3' añade un margen derecho a los elementos de la lista. -->
           <button class="btn btn-outline-light" type="submit">Iniciar</button>
+          <!--
+            'btn' es la clase base para botones.
+            'btn-outline-light' aplica un estilo de botón con contorno para fondos oscuros.
+          -->
         </li>
         <li class="nav-item me-3">
           <button class="btn btn-light " type="submit">Registrar</button>

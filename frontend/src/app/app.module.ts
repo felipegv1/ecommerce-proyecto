@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProductoDetalleComponent } from './components/producto/productoDetalle/producto-detalle/producto-detalle.component';
 import { CategoriaComponent } from './components/producto/categoria/categoria.component';
 import { CrearProductoComponent } from './components/producto/crear-producto/crear-producto.component';
+import { CategoriasComponent } from './components/categorias/categorias.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CrearProductoComponent } from './components/producto/crear-producto/cre
     ProductoDetalleComponent,
     CategoriaComponent,
     CrearProductoComponent,
+    CategoriasComponent,
 
   ],
   imports: [

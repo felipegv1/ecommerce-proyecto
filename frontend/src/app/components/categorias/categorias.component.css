@@ -1,0 +1,22 @@
+.categoria-card {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+
+}
+
+.cuadrado {
+  background-color: #BFDEFF;
+  width: 150px; /* Ancho del cuadrado azul */
+  height: 150px; /* Altura del cuadrado azul */
+  margin-right: auto;
+  border-right: 1px solid black;
+}
+
+.nombre-categoria {
+  flex-grow: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 1rem;
+  padding: 0 1rem;
+}
