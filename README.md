@@ -27,6 +27,10 @@ Para los test
 python manage.py test app.tests.productoTest
 python manage.py test app.tests.proveedorTest
 
+Instalar Boostrap:
+npm i bootstrap@5.3.3
+
+
 Inserts de la base de datos:
 
 INSERT INTO app_cliente(nombre, email, direccion, telefono)
